@@ -19,22 +19,38 @@ class Ledger(object):
         if not (iofile.endswith('.csv')):
             raise InputError('File is not a csv file!')
 
+        self.headers = ['Date', 'Account', 'Reference Number', 'Debit', 'Credit', 'Description'] #TODO Make this not hard-coded
+
         self.file_loc = file_loc
         self.transaction_list = []
 
         with open(file_loc, newline='') as csv_file:
             csv_reader = csv.reader(csv_file, delimiter=',')
             for row in csv_reader:
-                self.transaction_list.append(row)
+                l = []
+                for x in row:
+                    x = x.strip()
+                    try:
+                        x = float(x)
+                    except:
+                        x = x
+                    l.append(x)
+                self.transaction_list.append(l)
 
-    def __del__(self):
+    def write(self):
 
-        with open(self.file_loc, 'w', newline='') as csv_file:
-            csv.writer(csv_file)
-            writer.writerows(self.transaction_list)
+        with open(str(self.file_loc), 'w', newline='') as csv_file:
+            writer = csv.writer(csv_file, delimiter=',')
+            i = 0
+            for row in self.transaction_list:
+                if i == 0:
+                    row = list((str(x)) for x in row)
+                else:
+                    row = list((' ' + str(x)) for x in row)
+                i += 1
+                writer.writerow(row)
 
-        del self.transaction_list
-        del self.file_loc
-        del self
 
 ledger1 = Ledger('test.csv')
+print(ledger1.transaction_list)
+ledger1.write()
