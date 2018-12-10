@@ -1,13 +1,13 @@
-Date,Account,Reference Number,Debit,Credit,Description
- 1-Hammer-1371, Cash, #000, 1300.0, 120.0, One
- 13-Alturiak-1371, Cash, #001, 100.0, 0.0, Two
- 17-Ches-1371, Cash, #002, 13.5, 0.5, Three
- 1-Tarsakh-1371, Cash, #003, 0.0, 50.0, Four
- 28-Mirtul-1371, Cash, #004, 15.0, 35.0, Five
- 4-Kythorn-1371, Pocket, #005, 74.5, 12.3, Six
- 30-Flamerule-1371, Pocket, #006, 56.0, 13.7, Seven
- 14-Eleasis-1371, Cash, #007, 15.0, 56.0, Eight
- 3-Eleint-1371, Cash, #008, 12.0, 12.0, Nine
- 5-Marpenoth-1371, Cash, #009, 10.0, 4.0, Ten
- 19-Uktar-1371, Cash, #010, 16.0, 10.4, Eleven
- 21-Nightal-1371, Cash, #011, 18.0, 11.6, Twelve
+Date, Account, Reference Number, Debit, Credit, Description
+1-Hammer-1371, Cash, #000, 1300.0, 120.0, One
+13-Alturiak-1371, Cash, #001, 100.0, 0.0, Two
+17-Ches-1371, Cash, #002, 13.5, 0.5, Three
+1-Tarsakh-1371, Cash, #003, 0.0, 50.0, Four
+28-Mirtul-1371, Cash, #004, 15.0, 35.0, Five
+4-Kythorn-1371, Pocket, #005, 74.5, 12.3, Six
+30-Flamerule-1371, Pocket, #006, 56.0, 13.7, Seven
+14-Eleasis-1371, Cash, #007, 15.0, 56.0, Eight
+3-Eleint-1371, Cash, #008, 12.0, 12.0, Nine
+5-Marpenoth-1371, Cash, #009, 10.0, 4.0, Ten
+19-Uktar-1371, Cash, #010, 16.0, 10.4, Eleven
+21-Nightal-1371, Cash, #011, 18.0, 11.6, Twelve
