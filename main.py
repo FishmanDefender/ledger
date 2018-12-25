@@ -1,9 +1,13 @@
 #!/usr/bin/env python3
 import sys
 import os
-from ledger import *
 from tkinter import * # This is insecure import! Modify if conflicts arise!
 sys.path.append('./src')
+from ledger import *
+from ledgerhandler import *
+from addledgerprompt import *
+from removeledgerprompt import *
+from newpanedwindow import *
 
 
 #########################################################
@@ -21,8 +25,10 @@ class Window(Frame):
     def __init__(self, master=None):
         Frame.__init__(self, master)
         self.master = master
+        self.current_ledger = None
+        self.ledger_handler = LedgerHandler()
         self.init_window()
-        self.add_ledgerview()
+        self.init_panedwindow()
 
     def init_window(self):
         '''
@@ -57,23 +63,45 @@ class Window(Frame):
         # added a file menu option
         menu.add_cascade(label='Edit', menu=edit)
 
-    def add_ledgerview(self):
+        # Adds the 'Ledger' drop-down menu
+        ledger_menu = Menu(menu, tearoff=0)
+        ledger_menu.add_command(label='Open...', command=self.add_new_ledger)
+        ledger_menu.add_command(label='Remove...', command=self.remove_ledger)
+        menu.add_cascade(label='Ledger', menu=ledger_menu)
+
+    def init_panedwindow(self):
         '''
-        Creates new Frame to hold all the ledger entries
+        Creates the panedwindow class which will be used as the master for the ledgerview and entryview classes
         '''
 
-        self.ledgerview = Frame(self)
-        self.ledgerview.pack(side=LEFT)
-        testbutton = Button(self.ledgerview, text='test', fg='red')
-        testbutton.pack(side=LEFT)
+        # Adds a NewPanedWindow as a child of Window
+        self.panedwindow = NewPanedWindow(self)
 
     def client_exit(self):
         '''
         A basic exit command
         '''
-        exit()
+        exit() # Exits the program
 
-ledger1 = Ledger('test.csv')
+    def add_new_ledger(self):
+        '''
+        Method called by the 'New...' button under the 'Ledger' menu
+        '''
+
+        # Creates a NewLedgerPrompt class
+        newprompt = NewLedgerPrompt(self)
+
+    def remove_ledger(self):
+        '''
+        Method called by the 'Close...' button under the 'Ledger' menu
+        '''
+
+        # Creates a RemoveLedgerPrompt class
+        newprompt = RemoveLedgerPrompt(self)
+
+
+
+# ledger1 = Ledger('test.csv')
 # print(ledger1.transaction_list) #Used in debugging
 # ledger1.write()
 
@@ -82,5 +110,5 @@ root = Tk()         # Declaring Tkinter root
 # Setting size of main window
 root.geometry('1200x800')
 
-top  = Window(root) # Declaring the root Frame
+top = Window(root)  # Declaring the root Frame
 root.mainloop()     # Running the Tkinter root mainloop
